@@ -5,20 +5,25 @@ public class BankAccount {
 	private double balance;
 
 	public static void main(String[] args) {
+		//establishing variables
 		int x = 1;
 		String pass;
 		double bal;
 		String choice;
 		Scanner scan = new Scanner(System.in);
+		//asks the user to enter a password
 		System.out.println("Enter a new password: ");
 		String firstPassword = scan.nextLine();
+		//asks the user to set their balance
 		System.out.println("Enter your balance: ");
 		double firstBalance = scan.nextDouble();
 		scan.nextLine();
+		//Creates a bank account object using the password and balance
 		BankAccount a = new BankAccount(firstPassword, firstBalance);
 		while(x == 1) {
 			System.out.println("Would you like to deposit, withdaw, or know your balance? (d, w, or b)");
 			choice = scan.nextLine();
+			//deposit
 			if(choice.equals("d")) {
 				System.out.println("Please enter your password: ");
 				pass = scan.nextLine();
@@ -38,6 +43,7 @@ public class BankAccount {
 			}else {
 				System.out.println("Incorrect Option");
 			}
+			//asks the user if they want to exit the program
 			System.out.println("Would you like to exit? ");
 			choice = scan.nextLine();
 			if(choice.equals("yes")) {
@@ -46,17 +52,21 @@ public class BankAccount {
 		}
 
 	}
+	//default bank account
 	public BankAccount() {
 		password = "";
 		balance = 0.0;
 	}
+	//specific bank account
 	public BankAccount(String acctPassword, double acctBalance) {
 		password = acctPassword;
 		balance = acctBalance;
 	}
+	//accessor method for balance
 	public double getBalance() {
 		return balance;
 	}
+	//deposit function
 	public void deposit(String acctPassword, double amount) {
 		if(!acctPassword.equals(password)) {
 			System.out.println("Incorrect Password");
@@ -64,6 +74,7 @@ public class BankAccount {
 			balance+=amount;
 		}
 	}
+	//withdrawal function
 	public void withdraw(String acctPassword, double amount){
 		if(!acctPassword.equals(password)) {
 			System.out.println("Incorrect Password");
